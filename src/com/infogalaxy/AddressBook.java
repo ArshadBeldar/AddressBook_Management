@@ -1,13 +1,17 @@
 package com.infogalaxy;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
 
     static Scanner scanner = new Scanner(System.in);
-    static Contact contact = new Contact();
+
+    ArrayList<Contact> addressBookList = new ArrayList<>();
+    Contact contact = new Contact();
 
     public void inputContactData() {
+        Contact contact = new Contact();
 
         System.out.println("Enter The First Name :");
         contact.setFirstname(scanner.next());
@@ -29,13 +33,18 @@ public class AddressBook {
 
         System.out.println("Enter the Email :");
         contact.setEmail(scanner.next());
+
+        addressBookList.add(contact);
     }
 
-    public void showContactData() {
-        try{
-            System.out.println(contact.toString());
-        }
-        catch (NullPointerException na){
+    public void displayContactData() {
+        try {
+            int i;
+            for (i = 0; i < addressBookList.size(); i++) {
+                Contact contact = addressBookList.get(i);
+                System.out.println(contact.toString());
+            }
+        } catch (NullPointerException na) {
             System.out.println("Contact Not Exist !!!");
         }
 
@@ -52,13 +61,15 @@ public class AddressBook {
             System.out.println("Contact Not Found!!!");
         }
     }
-    public void deleteContact(){
+
+    public void deleteContact() {
         System.out.println("Enter the First Name for Delete Contact :");
         String name = scanner.next();
-        if (contact.getFirstname().equalsIgnoreCase(name)){
+        if (contact.getFirstname().equalsIgnoreCase(name)) {
             System.out.println("Contact Found....");
             contact = null;
-        }else {
+            System.out.println("Contact Deleted...");
+        } else {
             System.out.println("Contact Not Found!!!");
         }
     }
@@ -80,7 +91,7 @@ public class AddressBook {
                     ad.inputContactData();
                     break;
                 case 2:
-                    ad.showContactData();
+                    ad.displayContactData();
                     break;
                 case 3:
                     ad.editContact();
