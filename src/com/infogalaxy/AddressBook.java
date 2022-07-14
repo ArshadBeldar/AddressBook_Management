@@ -39,31 +39,39 @@ public class AddressBook {
 
     public void displayContactData() {
         try {
-            int i;
-            for (i = 0; i < addressBookList.size(); i++) {
+
+            for (int i = 0; i < addressBookList.size(); i++) {
                 Contact contact = addressBookList.get(i);
-                System.out.println(contact.toString());
+                    System.out.println(contact.toString());
             }
         } catch (NullPointerException na) {
             System.out.println("Contact Not Exist !!!");
         }
-
-
     }
 
     public void editContact() {
-        System.out.println("Please Enter the FirstName for Edit Contact :");
-        String Uname = scanner.next();
-        if (contact.getFirstname().equalsIgnoreCase(Uname)) {
-            System.out.println("Contact Found :");
-            inputContactData();
-        } else {
-            System.out.println("Contact Not Found!!!");
-        }
-    }
+        boolean yes=false;
+        System.out.println("------Please Enter the FirstName for Edit Contact------");
+        String name;
 
+        name = scanner.next();
+        for (int i = 0; i < addressBookList.size(); i++) {
+            Contact contact = addressBookList.get(i);
+            if (name.equalsIgnoreCase(contact.getFirstname())) {
+                inputContactData();
+                yes = true;
+                break;
+            }
+            if (yes==false){
+                System.out.println("Contact Not Found!!!!!");
+                break;
+            }
+
+        }
+
+    }
     public void deleteContact() {
-        System.out.println("Enter the First Name for Delete Contact :");
+        System.out.println("------Enter the First Name for Delete Contact------");
         String name = scanner.next();
         if (contact.getFirstname().equalsIgnoreCase(name)) {
             System.out.println("Contact Found....");
