@@ -82,8 +82,7 @@ public class AddressBook {
         }
     }
 
-    public static void main(String[] args) {
-        AddressBook ad = new AddressBook();
+    public void addressBookMenu (AddressBook addressBook) {
         int choice;
         do {
             System.out.println("******ADDRESS-BOOK MANAGEMENT******");
@@ -96,16 +95,16 @@ public class AddressBook {
             }
             switch (choice) {
                 case 1:
-                    ad.inputContactData();
+                    addressBook.inputContactData();
                     break;
                 case 2:
-                    ad.displayContactData();
+                    addressBook.displayContactData();
                     break;
                 case 3:
-                    ad.editContact();
+                    addressBook.editContact();
                     break;
                 case 4:
-                    ad.deleteContact();
+                    addressBook.deleteContact();
                     break;
                 case 5:
                     System.out.println("Exit");
