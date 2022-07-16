@@ -10,7 +10,7 @@ public class AddressBook {
     ArrayList<Contact> addressBookList = new ArrayList<>();
     Contact contact = new Contact();
 
-    public void inputContactData() {
+    public void  inputContactData() {
         Contact contact = new Contact();
 
         System.out.println("Enter The First Name :");
